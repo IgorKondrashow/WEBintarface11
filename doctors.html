@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши врачи - ЗеленыйЦвет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>ЗеленыйЦвет</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="doctors.html" class="active">Врачи</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="profile.html" class="active">Личный кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Наши специалисты</h1>
+            <p>Выберите врача и запишитесь на прием</p>
+        </section>
+
+        <section class="doctors-grid">
+            <div class="doctor-card">
+                <div class="doctor-image">
+                    <img src="images/doctor-1.jpg" alt="Врач">
+                </div>
+                <div class="doctor-info">
+                    <h3>Иванов Иван Иванович</h3>
+                    <p class="specialty">Главный врач, терапевт</p>
+                    <p class="experience">Стаж: 15 лет</p>
+                    <p class="description">Высшая категория, кандидат медицинских наук</p>
+                    <a href="#" class="btn-small">Записаться</a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-image">
+                    <img src="images/doctor-2.jpg" alt="Врач">
+                </div>
+                <div class="doctor-info">
+                    <h3>Петрова Елена Сергеевна</h3>
+                    <p class="specialty">Кардиолог</p>
+                    <p class="experience">Стаж: 12 лет</p>
+                    <p class="description">Первая категория, специалист по УЗИ</p>
+                    <a href="#" class="btn-small">Записаться</a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-image">
+                    <img src="images/doctor-3.jpg" alt="Врач">
+                </div>
+                <div class="doctor-info">
+                    <h3>Сидоров Алексей Петрович</h3>
+                    <p class="specialty">Невролог</p>
+                    <p class="experience">Стаж: 10 лет</p>
+                    <p class="description">Высшая категория, вертебролог</p>
+                    <a href="#" class="btn-small">Записаться</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="appointment-form">
+            <h2>Записаться на прием</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Выберите врача:</label>
+                    <select id="doctor">
+                        <option>Иванов И.И. - Терапевт</option>
+                        <option>Петрова Е.С. - Кардиолог</option>
+                        <option>Сидоров А.П. - Невролог</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Желаемая дата:</label>
+                    <input type="date" id="date">
+                </div>
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 МедЦентр. Все права защищены.</p>
+    </footer>
+</body>
+</html>

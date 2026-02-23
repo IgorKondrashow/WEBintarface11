@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в личный кабинет - ЗеленыйЦвет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>ЗеленыйЦвет</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="doctors.html">Врачи</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="login.html" class="active">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="profile.html" class="active">Личный кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Вход в личный кабинет</h2>
+                    <p>Введите свои данные для входа</p>
+                </div>
+                
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                        <span class="password-toggle" onclick="togglePassword('password')">👁</span>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="remember">
+                            <span class="checkmark"></span>
+                            Запомнить меня
+                        </label>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+                </div>
+                
+                <div class="social-login">
+                    <p>Или войдите через:</p>
+                    <div class="social-buttons">
+                        <button class="social-btn google">Google</button>
+                        <button class="social-btn vk">VK</button>
+                        <button class="social-btn yandex">Яндекс</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-info">
+                <h3>Преимущества личного кабинета</h3>
+                <ul class="benefits-list">
+                    <li>✓ Быстрая запись к врачу в один клик</li>
+                    <li>✓ История всех посещений и назначений</li>
+                    <li>✓ Результаты анализов онлайн</li>
+                    <li>✓ Напоминания о предстоящем визите</li>
+                    <li>✓ Скидки и специальные предложения</li>
+                    <li>✓ Личный календарь здоровья</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 МедЦентр. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+            field.setAttribute('type', type);
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Здесь будет отправка данных на сервер
+            alert('Вход выполнен успешно!');
+            window.location.href = 'profile.html';
+        });
+    </script>
+</body>
+</html>

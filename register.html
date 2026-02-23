@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - ЗеленыйЦвет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>ЗеленыйЦвет</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="doctors.html">Врачи</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html" class="active">Регистрация</a></li>
+                <li><a href="profile.html" class="active">Личный кабинет</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card register-card">
+                <div class="auth-header">
+                    <h2>Регистрация нового пользователя</h2>
+                    <p>Заполните форму для создания аккаунта</p>
+                </div>
+                
+                <form class="auth-form" id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="firstname">Имя *</label>
+                            <input type="text" id="firstname" name="firstname" placeholder="Иван" required>
+                        </div>
+                        
+                        <div class="form-group half">
+                            <label for="lastname">Фамилия *</label>
+                            <input type="text" id="lastname" name="lastname" placeholder="Иванов" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="patronymic">Отчество</label>
+                            <input type="text" id="patronymic" name="patronymic" placeholder="Иванович">
+                        </div>
+                        
+                        <div class="form-group half">
+                            <label for="birthdate">Дата рождения *</label>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-email">Email *</label>
+                        <input type="email" id="reg-email" name="email" placeholder="example@mail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-password">Пароль *</label>
+                        <input type="password" id="reg-password" name="password" placeholder="Придумайте пароль" required>
+                        <span class="password-toggle" onclick="togglePassword('reg-password')">👁</span>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <span>Сложность пароля</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Подтверждение пароля *</label>
+                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Повторите пароль" required>
+                        <span class="password-toggle" onclick="togglePassword('confirm-password')">👁</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="agreement" required>
+                            <span class="checkmark"></span>
+                            Я согласен с <a href="#">условиями обработки персональных данных</a> *
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="newsletter">
+                            <span class="checkmark"></span>
+                            Хочу получать новости и специальные предложения
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 МедЦентр. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+            field.setAttribute('type', type);
+        }
+        
+        // Простая валидация пароля
+        document.getElementById('reg-password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strengthBar = document.querySelector('.strength-bar');
+            let strength = 0;
+            
+            if (password.length >= 8) strength += 25;
+            if (password.match(/[a-z]+/)) strength += 25;
+            if (password.match(/[A-Z]+/)) strength += 25;
+            if (password.match(/[0-9]+/)) strength += 25;
+            
+            strengthBar.style.width = strength + '%';
+            
+            if (strength < 50) {
+                strengthBar.style.backgroundColor = '#ff4444';
+            } else if (strength < 75) {
+                strengthBar.style.backgroundColor = '#ffbb33';
+            } else {
+                strengthBar.style.backgroundColor = '#00C851';
+            }
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('reg-password').value;
+            const confirm = document.getElementById('confirm-password').value;
+            
+            if (password !== confirm) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            
+            // Здесь будет отправка данных на сервер
+            alert('Регистрация прошла успешно! Теперь вы можете войти в систему.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
