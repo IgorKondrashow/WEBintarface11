@@ -398,114 +398,146 @@ footer {
     }
 }
 
-/* Стили для страниц авторизации */
-.auth-container {
+/* Стили для уведомлений */
+.notification {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.notification-content {
     display: flex;
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 5%;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.auth-card {
-    flex: 1;
+    align-items: center;
+    padding: 1rem 1.5rem;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.notification-success .notification-content {
+    background: linear-gradient(135deg, #00C851 0%, #007E33 100%);
+    color: white;
+}
+
+.notification-error .notification-content {
+    background: linear-gradient(135deg, #ff4444 0%, #CC0000 100%);
+    color: white;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.notification-message {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.notification-close:hover {
+    opacity: 1;
+}
+
+/* Индикатор загрузки */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
 }
 
-.auth-card.register-card {
-    max-width: 700px;
-    margin: 0 auto;
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
 }
 
-.auth-header {
-    text-align: center;
-    margin-bottom: 2rem;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.auth-header h2 {
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.auth-header p {
+.loading-indicator p {
     color: #666;
+    font-size: 1rem;
 }
 
-.auth-form .form-row {
+/* Улучшенная форма */
+.form-row {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-.auth-form .form-group.half {
+.form-group.half {
     flex: 1;
 }
 
-.auth-form .form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.auth-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #555;
-}
-
-.auth-form input {
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid #e0e0e0;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.auth-form input:focus {
-    outline: none;
-    border-color: #667eea;
-}
-
-.password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 40px;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-.password-toggle:hover {
-    opacity: 1;
-}
-
-.password-strength {
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.strength-bar {
-    height: 4px;
-    width: 0;
-    background: #ff4444;
-    border-radius: 2px;
     transition: all 0.3s;
 }
 
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1.5rem 0;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #ff4444;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Чекбокс */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -514,457 +546,243 @@ footer {
     color: #666;
 }
 
-.checkbox-container input {
+.checkbox-container input[type="checkbox"] {
     width: auto;
     margin-right: 0.5rem;
+    transform: scale(1.2);
 }
 
-.forgot-password {
-    color: #667eea;
-    text-decoration: none;
-    font-size: 0.95rem;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.btn-block {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-}
-
-.auth-footer {
-    text-align: center;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e0e0e0;
-}
-
-.auth-footer a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.auth-footer a:hover {
-    text-decoration: underline;
-}
-
-.social-login {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.social-login p {
-    color: #666;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.social-login p::before,
-.social-login p::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 30%;
-    height: 1px;
-    background: #e0e0e0;
-}
-
-.social-login p::before {
-    left: 0;
-}
-
-.social-login p::after {
-    right: 0;
-}
-
-.social-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.social-btn {
-    flex: 1;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    max-width: 120px;
-}
-
-.social-btn.google {
-    background: #DB4437;
-    color: white;
-}
-
-.social-btn.google:hover {
-    background: #c53929;
-}
-
-.social-btn.vk {
-    background: #4C75A3;
-    color: white;
-}
-
-.social-btn.vk:hover {
-    background: #3a5f85;
-}
-
-.social-btn.yandex {
-    background: #FFCC00;
-    color: black;
-}
-
-.social-btn.yandex:hover {
-    background: #e6b800;
-}
-
-.auth-info {
-    flex: 1;
+/* Кнопка отправки */
+.btn-primary {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 10px;
-    padding: 2rem;
     color: white;
-}
-
-.auth-info h3 {
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
-.benefits-list {
-    list-style: none;
-}
-
-.benefits-list li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
+    padding: 1rem;
     font-size: 1.1rem;
-}
-
-.benefits-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* Стили для личного кабинета */
-.profile-container {
-    display: flex;
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 5%;
-    gap: 2rem;
-    min-height: 600px;
-}
-
-.profile-sidebar {
-    width: 280px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    padding: 2rem;
-}
-
-.profile-avatar {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.profile-avatar img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #667eea;
-    margin-bottom: 1rem;
-}
-
-.change-avatar {
-    background: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     border: none;
-    color: #667eea;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.change-avatar:hover {
-    text-decoration: underline;
-}
-
-.profile-info {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.profile-info h3 {
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.profile-info p {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
-
-.profile-menu ul {
-    list-style: none;
-}
-
-.profile-menu li {
-    margin-bottom: 0.5rem;
-}
-
-.profile-menu a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #666;
-    text-decoration: none;
-    border-radius: 5px;
     transition: all 0.3s;
 }
 
-.profile-menu a:hover {
-    background: #f0f0f0;
-    color: #667eea;
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
-.profile-menu li.active a {
-    background: #667eea;
-    color: white;
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-.btn-logout {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 1.5rem;
-    background: none;
-    border: 2px solid #ff4444;
-    color: #ff4444;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s;
-}
-
-.btn-logout:hover {
-    background: #ff4444;
-    color: white;
-}
-
-.profile-content {
-    flex: 1;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    padding: 2rem;
-}
-
-.profile-section {
-    display: none;
-}
-
-.profile-section.active {
-    display: block;
-}
-
-.profile-section h2 {
-    margin-bottom: 2rem;
-    color: #333;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #667eea;
-}
-
-.personal-info {
-    max-width: 600px;
-}
-
-.info-group {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.info-group label {
-    width: 120px;
-    font-weight: 500;
-    color: #666;
-}
-
-.info-group span {
-    flex: 1;
-    color: #333;
-}
-
-.edit-btn {
-    background: none;
-    border: none;
-    color: #667eea;
-    cursor: pointer;
-    font-size: 1.2rem;
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-.edit-btn:hover {
-    opacity: 1;
-}
-
-/* Стили для записей */
-.appointments-list {
-    margin-bottom: 2rem;
-}
-
-.appointment-card {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
-}
-
-.appointment-card.past {
-    border-left-color: #999;
-    opacity: 0.8;
-}
-
-.appointment-date {
-    text-align: center;
-    min-width: 80px;
-    margin-right: 1.5rem;
-}
-
-.appointment-date .day {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    line-height: 1;
-}
-
-.appointment-date .month {
-    display: block;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.appointment-date .time {
-    display: block;
-    color: #667eea;
-    font-weight: 500;
-    margin-top: 0.25rem;
-}
-
-.appointment-info {
-    flex: 1;
-}
-
-.appointment-info h3 {
-    margin-bottom: 0.25rem;
-    color: #333;
-}
-
-.appointment-info p {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
-
-.appointment-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.btn-small.cancel {
-    background: #ff4444;
-}
-
-.btn-small.cancel:hover {
-    background: #cc0000;
-}
-
-/* Стили для результатов */
-.results-list {
-    display: grid;
-    gap: 1rem;
-}
-
-.result-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.result-info h4 {
-    margin-bottom: 0.25rem;
-    color: #333;
-}
-
-.result-info p {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* Адаптивность для страниц авторизации и профиля */
+/* Адаптивность для формы */
 @media (max-width: 768px) {
-    .auth-container {
-        flex-direction: column;
-    }
-    
-    .auth-info {
-        order: -1;
-    }
-    
-    .auth-form .form-row {
+    .form-row {
         flex-direction: column;
         gap: 0;
     }
     
-    .profile-container {
-        flex-direction: column;
-    }
-    
-    .profile-sidebar {
-        width: 100%;
-    }
-    
-    .appointment-card {
+    .notification-content {
         flex-direction: column;
         text-align: center;
     }
     
-    .appointment-date {
+    .notification-icon {
         margin-right: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     
-    .appointment-actions {
-        margin-top: 1rem;
+    .notification-close {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Стили для сообщения об успешной отправке */
+.success-message {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #00C851 0%, #007E33 100%);
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 2rem;
+    animation: slideInDown 0.5s;
+}
+
+.success-icon {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    animation: bounce 1s;
+}
+
+.success-message h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Стили для предпросмотра данных (только для разработки) */
+.data-preview {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.data-preview h4 {
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.data-preview pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* Улучшенные стили для формы */
+.appointment-form {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.appointment-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.appointment-form h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #999;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Стили для кнопки отправки */
+.appointment-form .btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.appointment-form .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.appointment-form .btn:active {
+    transform: translateY(0);
+}
+
+/* Адаптивность для формы */
+@media (max-width: 768px) {
+    .appointment-form {
+        padding: 1.5rem;
+        margin: 1rem;
     }
     
-    .social-buttons {
-        flex-wrap: wrap;
+    .success-message h3 {
+        font-size: 1.4rem;
     }
     
-    .social-btn {
-        max-width: none;
+    .success-icon {
+        font-size: 3rem;
     }
 }
